@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS3饼状loading效果</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    @keyframes roll {
+      0% {
+        transform: rotateZ(0deg);
+      }
+      100% {
+        transform: rotateZ(-360deg);
+      }
+    }
+    
+    @keyframes half-circle-1 {
+      /**
+      * blue
+      */
+      0% {
+        z-index: 0;
+        transform: rotateZ(0deg);
+      }
+      25% {
+        transform: rotateZ(0deg);
+      }
+      50% {
+        z-index: 1;
+        transform: rotateZ(-180deg);
+      }
+      75% {
+        transform: rotateZ(-180deg);
+      }
+      100% {
+        z-index: 0;
+        transform: rotateZ(-360deg);
+      }
+    }
+    
+    @keyframes half-circle-2 {
+      /**
+      * red
+      */
+      0% {
+        z-index: 0;
+        transform: rotateZ(0deg);
+      }
+      25% {
+        transform: rotateZ(-180deg);
+      }
+      50% {
+        transform: rotateZ(-180deg);
+      }
+      75% {
+        transform: rotateZ(-360deg);
+      }
+      100% {
+        transform: rotateZ(-360deg);
+      }
+    }
+
+    
+    .loading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    
+    .three-fourths-ring {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+      border: 3px solid #e91e63;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation-name: roll;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    .circle {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      top: 50%;
+      left: 50%;
+      margin-top: -30px;
+      margin-left: -30px;
+      border-radius: 50%;
+    }
+    
+    .out {
+      background: linear-gradient(90deg, #f48fb1 50%, #e91e63 50%);
+    }
+    
+    .half-circle-1 {
+      position: absolute;
+      width: 30px;
+      height: 60px;
+      top: 50%;
+      left: 0;
+      margin-top: -30px;
+      background: #f48fb1;
+      border-radius: 100% 0 0 100% / 50%;
+      transform-origin: right;
+      transform: rotateZ(0deg);
+      animation-name: half-circle-1;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    .half-circle-2 {
+      position: absolute;
+      width: 30px;
+      height: 60px;
+      top: 50%;
+      left: 0;
+      margin-top: -30px;
+      background: #e91e63;
+      border-radius: 100% 0 0 100% / 50%;
+      transform-origin: right;
+      transform: rotateZ(0deg);
+      animation-name: half-circle-2;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loading">
+    <div class="three-fourths-ring">
+    </div>
+    <div class="circle out">
+      <div class="half-circle-1"></div>
+      <div class="half-circle-2"></div>
+    </div>
+  </div>
+</body>
+
+</html>
